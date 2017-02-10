@@ -3,9 +3,16 @@ use scripting additions
 use framework "Foundation"
 use framework "AppKit"
 
+-------------- Stuff for logging --------------------------
+log (date string of (current date))
+log (time string of (current date))
+
+
+-------------- Wait for a network connection to load ---------------
+set network_status to do shell script "./wait_for_network.sh"
+log network_status
 
 -------------- Download Picture from NASA API  ---------------------
-
 
 -- put your api key here you can get one from https://api.nasa.gov/index.html#apply-for-an-api-key
 set api_key to "FFfHRjP8nZXH6gXtNeBUNJBWX6GjVyYjmM4nuufG"
@@ -88,9 +95,6 @@ set text_padding to 10
 set text_x_offset to (screen_width - image_width) / 2 + text_padding
 set text_y_offset to (screen_height - image_height) / 2 - menu_bar_height - text_padding
 
-log text_y_offset
-log image_height + text_y_offset
-log image_height
 ---------------------- Drawing Explanation on the Image --------------------
 
 -- build path for exported image
@@ -167,3 +171,6 @@ end tell
 
 ---reset the dock process to refresh images
 do shell script "killall Dock"
+
+log(hd_url)
+log(explanation)

@@ -18,5 +18,9 @@
         <key>Minute</key>
         <integer>03</integer>
     </dict>
-</dict>
+    <key>StandardOutPath</key>
+    <string>/tmp/change_background.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/change_background.log</string>
+    </dict>
 </plist>
