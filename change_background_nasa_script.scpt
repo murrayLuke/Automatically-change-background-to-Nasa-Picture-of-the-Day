@@ -9,8 +9,9 @@ log (time string of (current date))
 
 
 -------------- Wait for a network connection to load ---------------
-set network_status to do shell script "./wait_for_network.sh"
+set network_status to do shell script quoted form of (POSIX path of ((path to me as text) & "::")) & "wait_for_network.sh"
 log network_status
+
 
 -------------- Download Picture from NASA API  ---------------------
 
@@ -28,10 +29,10 @@ do shell script "export PYTHONIOENCODING=utf8"
 -- get the hd url for the nasa image of the day
 -- we use python to pare the json response so that we don't have any external
 -- dependencies
-set hd_url to do shell script "curl -s " & nasa_API_URL & "| python -c \"import sys, json; print json.load(sys.stdin)['hdurl']\""
+set hd_url to do shell script "curl -s " & nasa_API_URL & "| python -c \"import sys, json; print json.load(sys.stdin)['hdurl'].encode('utf-8')\""
 
 -- get the astronomer's explanation of what the image is
-set explanation to do shell script "curl -s " & nasa_API_URL & "| python -c \"import sys, json; print json.load(sys.stdin)['explanation']\""
+set explanation to do shell script "curl -s " & nasa_API_URL & "| python -c \"import sys, json; print json.load(sys.stdin)['explanation'].encode('utf-8')\""
 
 -- download the image to the path_to_background
 do shell script "curl -L -o" & quoted form of path_to_background & " " & quoted form of hd_url
