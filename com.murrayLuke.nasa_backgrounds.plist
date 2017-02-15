@@ -14,9 +14,9 @@
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
-        <integer>00</integer>
+        <integer>04</integer>
         <key>Minute</key>
-        <integer>03</integer>
+        <integer>00</integer>
     </dict>
     <key>StandardOutPath</key>
     <string>/tmp/change_background.log</string>
